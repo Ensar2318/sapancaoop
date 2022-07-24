@@ -1,32 +1,82 @@
-<!-- ======= Footer ======= -->
-<footer id="footer" class="footer">
-    <div class="copyright">
-        &copy; Copyright <strong><span>Codderman</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-        Designed by <a href="">Codderman</a>
-    </div>
-</footer>
-<!-- End Footer -->
+    <!-- Footer START -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-3 col-md-4  col-sm-6 text-center text-sm-start ">
+                    <h5>Odalarımız</h5>
+                    <ol>
+                        <li class="justify-content-sm-start justify-content-center"><a href=""><img src="assets/img/room1.JPG" class="img-fluid"></a> <a href="rooms-detay.html" class="plink">
+                                <p>Havuz Suit</p>
+                            </a></li>
+                        <li class="justify-content-sm-start justify-content-center"><a href=""><img src="assets/img/room2.JPG" class="img-fluid"></a> <a href="rooms-detay.html" class="plink">
+                                <p>Deluxe Çift Kişilik Oda</p>
+                            </a></li>
+                        <li class="justify-content-sm-start justify-content-center"><a href=""><img src="assets/img/room3.JPG" class="img-fluid"></a> <a href="rooms-detay.html" class="plink">
+                                <p>Suit</p>
+                            </a></li>
+                    </ol>
+                </div>
+                <div class="col-lg-3  col-md-4 col-sm-6 text-center text-md-start">
+                    <h5>İletişim Bilgilerimiz</h5>
+                    <ol>
+                        <li class="flex-column align-items-md-start align-items-center ">
+                            <div class="title">
+                                <i class="bi bi-telephone"></i>
+                                <h6>Telefon</h6>
+                            </div>
+                            <span>+<?php echo $setting['settings_phone'] ?></span>
+                        </li>
+                        <li class="flex-column align-items-md-start align-items-center">
+                            <div class="title">
+                                <i class="bi bi-envelope"></i>
+                                <h6>E-posta</h6>
+                            </div>
+                            <span><?php echo $setting['settings_email'] ?></span>
+                        </li>
+                        <li class="flex-column align-items-md-start align-items-center">
+                            <div class="title">
+                                <i class="bi bi-geo-alt"></i>
+                                <h6>Adres</h6>
+                            </div>
+                            <span><?php echo $setting['settings_adress'] ?></span>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-3 text-center  col-md-4">
+                    <img src="assets/img/logo-white.png" class="img-fluid logo">
+                    <p class="aciklama">İstanbul’un yeni merkezi ve sanayi bölgelerinin hızla gelişip, genişlediği
+                        Anadolu yakasında tüm
+                        ihtiyaçlarınızı karşılayabilecek ve sizi şehir stresinden uzak tutacak şehir oteliniz Sapanca
+                        Bi...
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-text">
+            © <?php echo $setting['settings_copyright'] ?> | Tüm Hakları Saklıdır.
+        </div>
+    </footer>
+    <!-- Footer END -->
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-<!-- Vendor JS Files -->
-<script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/vendor/chart.js/chart.min.js"></script>
-<script src="assets/vendor/echarts/echarts.min.js"></script>
-<script src="assets/vendor/quill/quill.min.js"></script>
-<script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-<script src="assets/vendor/tinymce/tinymce.min.js"></script>
-<script src="assets/vendor/php-email-form/validate.js"></script>
-<script src="assets/vendor/sweetalert/sweetalert2.min.js"></script>
-<script src="assets/vendor/jquerry/jquery-3.6.0.min.js"></script>
 
 
-<!-- Template Main JS File -->
-<script src="assets/js/main.js"></script>
-<script src="assets/js/my.js"></script>
-</body>
 
-</html>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquerry/jquery-3.6.0.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/typed.js/typed.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    </body>
+
+    </html>
