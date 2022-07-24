@@ -87,7 +87,42 @@ h6 {
     padding: 1px 10px;
 }
 
+.resimyok-td {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    height: 60px;
+}
 
+.profile-image {
+    width: 36px;
+    height: 36px;
+}
+
+.clear-btn {
+    margin-left: -72px;
+    border: 1px solid #ced4da;
+    width: 80px;
+    border-radius: .25rem;
+    transition: 0.3s;
+}
+
+.clear-btn:hover {
+    background-color: #f59881;
+    color: #fff;
+}
+
+.input-clear {
+    padding-right: 80px;
+}
+.barier{
+    transition: 0.4s;
+}
+.change-cols{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
 /*--------------------------------------------------------------
 # Page Title
 --------------------------------------------------------------*/
@@ -293,7 +328,7 @@ h6 {
 
 .card-title {
     padding: 20px 0 15px 0;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 500;
     color: #012970;
     font-family: "Poppins", sans-serif;

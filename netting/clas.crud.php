@@ -5,6 +5,10 @@ require_once 'dbconfig.php';
 
 //# key_insert = submit butonu name adı.
 //# key_column = Where koşununu saglandıgı bilgi.
+//# key_dir = fotoraf kaydedilcegi dosya adı
+//# key_filename = input file gönderirkenki file adı
+//# key_oldimage = fotoraf güncellenirken gönderilen eski yol silmemiz için gerekli
+//# key_
 
 class crud
 {
@@ -87,7 +91,7 @@ class crud
                 'jpg',
                 'jpge',
                 'png',
-                'ico'
+                'ico',
             ];
 
             $ext = strtolower(substr($name, strpos($name, '.') + 1));
@@ -158,9 +162,28 @@ class crud
     {
         try {
 
+            if (!empty($_FILES[$options['key_filename']]['name'])) {
+
+                $name_y = $this->imageUpload(
+                    $_FILES[$options['key_filename']]['name'],
+                    $_FILES[$options['key_filename']]['size'],
+                    $_FILES[$options['key_filename']]['tmp_name'],
+                    $options['key_dir'],
+                    $values[$options['key_oldimage']]
+                );
+
+                // print_r($name_y);
+                // exit;
+                if ($name_y['status'] == FALSE) {
+                    throw new Exception($name_y['error'], 1);
+                }
+                $values += [$options['key_filename'] => $name_y];
+            }
+
             $column = [$options['key_column'] => $values[$options['key_column']]];
             unset($values[$options['key_insert']]);
             unset($values[$options['key_column']]);
+            unset($values[$options['key_oldimage']]);
             $valuesExecute = $values;
             $valuesExecute += $column;
 
@@ -190,7 +213,7 @@ class crud
             $status = $stmt->execute([$value]);
             if ($status) {
                 if ($filename != null) {
-                    unlink("dimg/".$table."/".$filename);
+                    unlink("dimg/" . $table . "/" . $filename);
                 }
                 return ['status' => TRUE, 'err' => "Silme İşlemi Başarılı"];
             } else {

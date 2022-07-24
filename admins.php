@@ -34,7 +34,7 @@ require_once 'sidebar.php';
 
         <!-- Data Base Veri Güncelleme -->
         <?php if (isset($_POST['updatecrud'])) {
-          $status = $db->update("admins", $_POST, ['key_insert' => 'updatecrud', 'key_column' => 'admins_id']);
+          $status = $db->update("admins", $_POST, ['key_insert' => 'updatecrud', 'key_column' => 'admins_id', 'key_dir' => 'admins', 'key_filename' => 'admins_file', 'key_oldimage' => 'oldimage']);
           $_SESSION['errors'] = $status;
           header("location:$baseHref?err");
           exit;
@@ -49,10 +49,10 @@ require_once 'sidebar.php';
             <div class="card-body">
               <h3 class="card-title mt-2 text-center">Admin Güncelleme</h3>
 
-              <form class="row g-3 needs-validation align-items-center flex-column" novalidate="" method="POST">
+              <form class="row g-3 needs-validation align-items-center flex-column" novalidate="" method="POST" enctype="multipart/form-data">
 
                 <div class="col-md-4">
-                  <label class="form-label w-100"><?php echo empty($sVal['admins_file'])?'<b>Profil Resmi Yok!</b>':'<b>Mevcut Resim</b>'; ?></label>
+                  <label class="form-label w-100"><?php echo empty($sVal['admins_file']) ? '<b>Profil Resmi Yok!</b>' : '<b>Mevcut Resim</b>'; ?></label>
                   <?php if (!empty($sVal['admins_file'])) { ?>
                     <img style="width: 200px;" src="dimg/admins/<?php echo $sVal['admins_file'] ?>">
                   <?php } ?>
@@ -106,6 +106,8 @@ require_once 'sidebar.php';
                   </select>
                 </div>
                 <input type="hidden" value="<?php echo $sVal['admins_id'] ?>" name="admins_id">
+                <input type="hidden" value="<?php echo $sVal['admins_file'] ?>" name="oldimage">
+
 
                 <div class="col-md-4">
                   <button class="btn btn-success w-100" type="submit" name="updatecrud">Kaydet</button>
@@ -203,19 +205,27 @@ require_once 'sidebar.php';
               <thead>
                 <tr>
                   <th scope="col">#</th>
+                  <th width='200' scope="col">Profil Fotorafı</th>
                   <th scope="col">Ad Soyad</th>
                   <th scope="col">Kullanıcı Adı</th>
                   <th scope="col">Pozisyon</th>
                   <th scope="col">Durum</th>
-                  <th scope="col">Düzenle</th>
-                  <th scope="col"></th>
+                  <th width='100' scope="col">Düzenle</th>
+                  <th width='100' scope="col"></th>
 
                 </tr>
               </thead>
               <tbody>
                 <?php foreach ($row as $key => $val) { ?>
                   <tr>
-                    <th scope="row">1</th>
+                    <th scope="row"><?php echo $key + 1 ?></th>
+                    <?php if (!empty($val['admins_file'])) { ?>
+                      <td><img src="dimg/admins/<?php echo $val['admins_file'] ?>" style="height: 60px; width: 60px;" class="rounded-circle img-fluid bg-dark-light"></td>
+                    <?php } else { ?>
+                      <td>
+                        <h6 class="text-danger resimyok-td"><b>Resim yok</b></h6>
+                      </td>
+                    <?php } ?>
                     <td><?php echo $val['admins_namesurname'] ?></td>
                     <td><?php echo $val['admins_username'] ?></td>
                     <td><?php echo $val['admins_title'] ?></td>

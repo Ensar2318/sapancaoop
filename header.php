@@ -1,7 +1,9 @@
 <?php
 require_once 'netting/clas.crud.php';
 require_once 'netting/setconfig.php';
-$baseHref = explode(".",basename($_SERVER['PHP_SELF']))[0];
+$baseHref = explode(".", basename($_SERVER['PHP_SELF']))[0];
+
+$userValue = $db->wRead("admins", "admins_id", $_SESSION['admins']['admins_id'])->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -63,15 +65,15 @@ $baseHref = explode(".",basename($_SERVER['PHP_SELF']))[0];
                 <li class="nav-item dropdown pe-3">
 
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">T. Kullanıcı</span>
+                        <img src="dimg/admins/<?php echo $userValue['admins_file'] ?>" alt="Profile" class="rounded-circle profile-image">
+                        <span class="d-none d-md-block dropdown-toggle ps-2"><?php echo $userValue['admins_namesurname'] ?></span>
                     </a>
 
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>T. Kullanıcı</h6>
-                            <span>Web Designer</span>
+                            <h6><?php echo $userValue['admins_namesurname'] ?></h6>
+                            <span><?php echo $userValue['admins_title'] ?></span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
